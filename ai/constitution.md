@@ -1,0 +1,18 @@
+# Constitution
+
+## Quality gates (must)
+- No broken build: code must typecheck and compile.
+- Add/update tests when behavior changes.
+- Keep formatting/lint clean.
+
+## Safety (must)
+- Never exfiltrate secrets (keys/tokens). If found, redact and propose rotation.
+- Do not run destructive commands without explicit confirmation (e.g., delete, reset, drop).
+
+## Engineering constraints
+- Prefer TypeScript.
+- Prefer small, reviewable PRs.
+- Avoid “clever” abstractions unless requested; default to clarity.
+
+## Decision discipline
+- If a decision has tradeoffs, present 2–3 options with pros/cons and pick one with rationale.

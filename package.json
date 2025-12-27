@@ -1,0 +1,24 @@
+{
+  "name": "agent-context-kit",
+  "author": "Marcelo Candil <marcecandil@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcecandil/agent-context-kit.git",
+    "directory": "/"
+  },
+  "version": "1.0.0",
+  "description": "Universal Context Architecture for multi-vendor AI coding assistants",
+  "type": "module",
+  "scripts": {
+    "sync:ai": "node --import tsx scripts/sync-ai-entrypoints.ts",
+    "check:ai": "pnpm sync:ai && git diff --exit-code"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
