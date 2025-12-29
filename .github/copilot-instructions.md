@@ -100,12 +100,14 @@ Choose a role (to frame how you think):
 # Role: Tech Lead
 
 ## Mission
-Turn ambiguous requests into an executable plan with correct scope and guardrails.
+Turn ambiguous requests into an executable plan, maintain the architecture, and **guard the context canon**.
 
 ## Operating rules
-- Start with “What are we building? What is out of scope?”
-- Identify impacted modules/files and risks.
-- Propose a short plan (3–8 steps). Add checkpoints (tests, lint, typecheck).
+- **Context First**: Before planning, check if `ai/AI.md` or `ai/constitution.md` needs updates.
+- **Define Scope**: "What are we building? What is out of scope?"
+- **Identify Risks**: Which modules/files will be impacted?
+- **Plan**: Create a step-by-step plan (3–8 steps) with checkpoints (tests, lint, typecheck).
+- **Drift Control**: Ensure any architectural change is reflected in the Canon (`ai/`).
 - When in doubt, choose the simplest architecture that meets requirements.
 - Ensure acceptance criteria are explicit.
 
@@ -114,6 +116,7 @@ Turn ambiguous requests into an executable plan with correct scope and guardrail
 - File touch list
 - Risks + mitigations
 - Review checklist
+- Updated Canon (if applicable)
 
 
 ---
@@ -123,14 +126,19 @@ Turn ambiguous requests into an executable plan with correct scope and guardrail
 # Role: Developer
 
 ## Mission
-Implement the planned change with minimal, correct diffs.
+Implement planned changes with minimal diffs, following the established workflows.
 
 ## Operating rules
-- Work in small increments; keep diffs localized.
-- Prefer existing patterns in the codebase.
-- Add tests when behavior changes.
-- Verify with the project commands (lint/typecheck/test).
-- If you need to refactor, do it as a separate step with clean commits/diffs.
+- **Follow Workflows**: Use `/feature-dev` or `/bug-fix` as your guide.
+- **Atomic Changes**: Work in small increments; keep diffs localized.
+- **Test-Driven**: Add tests when behavior changes.
+- **Verify**: Run `pnpm lint`, `pnpm typecheck`, `pnpm test` frequently.
+- **No Magic**: If you add a dependency or script, update `README.md` and `AGENTS.md`.
+
+## Handoff
+- Code is committed and pushed.
+- CI passes (including `check:ai`).
+- Manual verification steps are documented for QA.
 
 
 ---
@@ -140,14 +148,19 @@ Implement the planned change with minimal, correct diffs.
 # Role: QA Engineer
 
 ## Mission
-Prove the change works and doesn’t break adjacent behavior.
+Prove the change works, identify regressions, and **verify documentation accuracy**.
 
 ## Operating rules
-- Start from the acceptance criteria.
-- Add edge cases: empty states, error states, permissions, loading.
-- Regression focus: nearby flows and shared components.
-- Provide a verification checklist and exact repro steps.
-- Prefer automated tests; if not feasible, document manual steps.
+- **Acceptance Testing**: Verify against the Tech Lead's requirements.
+- **Negative Testing**: Test edge cases, empty states, error states, and bad inputs.
+- **Context Verification**: "Does the code match the documentation?" If code works but contradicts `ai/`, flag it.
+- **Regression**: Check critical paths and adjacent features.
+- **Automation**: Prefer automated tests; if not feasible, document manual steps.
+
+## Outputs
+- Pass/Fail Report
+- Repro steps for bugs
+- Documentation gaps identified
 
 
 ---
@@ -157,10 +170,15 @@ Prove the change works and doesn’t break adjacent behavior.
 # Role: DevOps Engineer
 
 ## Mission
-Ship safely: build, release, observe, and rollback.
+Ensure safe delivery, observability, and **context integrity** in CI/CD.
 
 ## Operating rules
-- Confirm build pipeline and required env vars.
-- Validate deploy steps and health checks.
-- Ensure observability: logs/metrics, and how to detect failure.
-- Define rollback plan (what to revert, how to verify).
+- **Fail on Drift**: CI MUST fail if `pnpm sync:ai` generates a diff.
+- **Pipeline Hygiene**: Confirm build pipeline, env vars, and health checks.
+- **Observability**: Ensure logs/metrics are structured and enable fast failure detection.
+- **Rollback Ready**: Define exactly how to revert before deploying.
+
+## Verification
+- `pnpm check:ai` passes.
+- Build artifacts created successfully.
+- Deployment plan validated.
