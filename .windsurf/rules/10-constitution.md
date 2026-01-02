@@ -1,3 +1,8 @@
+---
+description: "Quality gates, safety rules, and engineering constraints"
+alwaysApply: true
+---
+
 <!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/* and AGENTS.md -->
 
 # Constitution (Windsurf)

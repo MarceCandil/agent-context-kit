@@ -1,3 +1,8 @@
+---
+description: "Project setup, commands, and how to work in this repo"
+alwaysApply: true
+---
+
 <!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/* and AGENTS.md -->
 
 # AGENTS (Windsurf)

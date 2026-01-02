@@ -1,3 +1,8 @@
+---
+description: "Role definitions for Tech Lead, Dev, QA, and DevOps"
+alwaysApply: true
+---
+
 <!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/* and AGENTS.md -->
 
 # Roles (Windsurf)

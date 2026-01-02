@@ -26,6 +26,16 @@ function banner(title: string) {
   return `<!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/* and AGENTS.md -->\n\n# ${title}\n`;
 }
 
+function windsurfFrontmatter(description: string, alwaysApply = true) {
+  return `---
+description: "${description}"
+alwaysApply: ${alwaysApply}
+---
+
+`;
+}
+
+
 function joinSections(sections: Array<{ title: string; body: string }>) {
   return sections
     .map((s) => `\n\n---\n\n## ${s.title}\n\n${s.body.trim()}\n`)
@@ -85,21 +95,21 @@ function main() {
     [
       {
         filename: ".windsurf/rules/00-agents.md",
-        content: banner("AGENTS (Windsurf)") + agents + "\n",
+        content: windsurfFrontmatter("Project setup, commands, and how to work in this repo") + banner("AGENTS (Windsurf)") + agents + "\n",
       },
       {
         filename: ".windsurf/rules/10-constitution.md",
-        content: banner("Constitution (Windsurf)") + constitution + "\n",
+        content: windsurfFrontmatter("Quality gates, safety rules, and engineering constraints") + banner("Constitution (Windsurf)") + constitution + "\n",
       },
       {
         filename: ".windsurf/rules/20-roles.md",
-        content:
+        content: windsurfFrontmatter("Role definitions for Tech Lead, Dev, QA, and DevOps") +
           banner("Roles (Windsurf)") +
           joinSections(roles.map((r) => ({ title: r.title, body: r.body }))),
       },
       {
         filename: ".windsurf/rules/30-map.md",
-        content: banner("AI Map (Windsurf)") + aiMap + "\n",
+        content: windsurfFrontmatter("AI Hub - entry point and project map") + banner("AI Map (Windsurf)") + aiMap + "\n",
       },
     ],
     12000

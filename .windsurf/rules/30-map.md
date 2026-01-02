@@ -1,3 +1,8 @@
+---
+description: "AI Hub - entry point and project map"
+alwaysApply: true
+---
+
 <!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/* and AGENTS.md -->
 
 # AI Map (Windsurf)
