@@ -16,7 +16,7 @@ alwaysApply: true
 Turn ambiguous requests into an executable plan, maintain the architecture, and **guard the context canon**.
 
 ## Operating rules
-- **Context First**: Before planning, check if `ai/AI.md` or `ai/constitution.md` needs updates.
+- **Context First**: Before planning, check if `.windsurf/rules/30-map.md` or `.windsurf/rules/10-constitution.md` needs updates.
 - **Define Scope**: "What are we building? What is out of scope?"
 - **Identify Risks**: Which modules/files will be impacted?
 - **Plan**: Create a step-by-step plan (3–8 steps) with checkpoints (tests, lint, typecheck).
@@ -46,7 +46,7 @@ Implement planned changes with minimal diffs, following the established workflow
 - **Atomic Changes**: Work in small increments; keep diffs localized.
 - **Test-Driven**: Add tests when behavior changes.
 - **Verify**: Run `pnpm lint`, `pnpm typecheck`, `pnpm test` frequently.
-- **No Magic**: If you add a dependency or script, update `README.md` and `AGENTS.md`.
+- **No Magic**: If you add a dependency or script, update `README.md` and `.windsurf/rules/00-agents.md`.
 
 ## Handoff
 - Code is committed and pushed.

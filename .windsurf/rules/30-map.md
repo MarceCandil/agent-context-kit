@@ -11,26 +11,26 @@ alwaysApply: true
 This repository uses a small “role + workflow” operating model.
 
 ## Non-negotiables
-- Follow `ai/constitution.md` (quality, safety, repo conventions).
+- Follow `.windsurf/rules/10-constitution.md` (quality, safety, repo conventions).
 - If you are uncertain, stop and ask. Do not invent requirements.
 - Prefer minimal diffs and incremental steps.
 
 ## Repo essentials
-- Project commands/setup: `AGENTS.md`
-- Reusable skills/knowledge: `ai/skills/*`
+- Project commands/setup: `.windsurf/rules/00-agents.md`
+- Reusable skills/knowledge: `.windsurf/rules/40-skills.md`
 
 ## How to run work
 Choose a workflow:
-- Feature work: `ai/workflows/feature-dev.md`
-- Bug fix: `ai/workflows/bug-fix.md`
-- PR review: `ai/workflows/pr-review.md`
-- Deploy/release: `ai/workflows/deploy.md`
+- Feature work: `.windsurf/workflows/feature-dev.md`
+- Bug fix: `.windsurf/workflows/bug-fix.md`
+- PR review: `.windsurf/workflows/pr-review.md`
+- Deploy/release: `.windsurf/workflows/deploy.md`
 
 Choose a role (to frame how you think):
-- Tech Lead: `ai/roles/tech-lead.md`
-- Dev: `ai/roles/dev.md`
-- QA: `ai/roles/qa.md`
-- DevOps: `ai/roles/devops.md`
+- Tech Lead: `.windsurf/rules/20-roles.md` (tech-lead section)
+- Dev: `.windsurf/rules/20-roles.md` (dev section)
+- QA: `.windsurf/rules/20-roles.md` (qa section)
+- DevOps: `.windsurf/rules/20-roles.md` (devops section)
 
 ## What to do first in any task
 1) Restate goal + constraints
