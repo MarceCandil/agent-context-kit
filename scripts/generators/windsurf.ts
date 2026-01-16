@@ -24,8 +24,8 @@ export function transformReferencesForWindsurf(content: string): string {
     .replace(/`ai\/roles\/qa\.md`/g, '`.windsurf/rules/20-roles.md` (qa section)')
     .replace(/`ai\/roles\/devops\.md`/g, '`.windsurf/rules/20-roles.md` (devops section)')
 
-    // Skills references (native skills in .windsurf/skills/ or bundled in 40-skills.md)
-    .replace(/`ai\/skills\/\*`/g, '`.windsurf/skills/` or `.windsurf/rules/40-skills.md`')
+    // Skills references (native skills in .windsurf/skills/)
+    .replace(/`ai\/skills\/\*`/g, '`.windsurf/skills/`')
     .replace(/`ai\/skills\/([a-z-]+)\.md`/g, '`.windsurf/skills/$1/SKILL.md`')
 
     // AGENTS.md reference
@@ -47,7 +47,35 @@ function banner(title: string): string {
 }
 
 /**
- * Generate Windsurf rules and workflows.
+ * Skill descriptions for native Windsurf SKILL.md files.
+ * Maps skill name to description for automatic invocation.
+ */
+const skillDescriptions: Record<string, string> = {
+  db: "Database schema changes and migration workflows. Use when creating, modifying, or rolling back migrations.",
+  git: "Git workflows and PR hygiene. Use when creating branches, commits, or preparing pull requests.",
+  test: "Testing strategy and best practices. Use when writing tests or deciding test coverage.",
+  "review-checklist": "Code review guidelines. Use when reviewing pull requests or ensuring quality standards.",
+  "react-best-practices": "React and Next.js performance optimization. Use when writing or reviewing React/Next.js code.",
+};
+
+/**
+ * Generate native Windsurf SKILL.md file content.
+ */
+function generateSkillMd(skillName: string, skillBody: string): string {
+  const description = skillDescriptions[skillName] || `Skill for ${skillName}`;
+  return `---
+name: ${skillName}
+description: ${description}
+---
+
+<!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/skills/${skillName}.md -->
+
+${skillBody}
+`;
+}
+
+/**
+ * Generate Windsurf rules, workflows, and native skills.
  * Returns array of files to write.
  */
 export function generateWindsurfFiles(
@@ -87,12 +115,6 @@ export function generateWindsurfFiles(
       content: windsurfFrontmatter("AI Hub - entry point and project map") +
         banner("AI Map (Windsurf)") +
         transformReferencesForWindsurf(aiMap) + "\n",
-    },
-    {
-      filename: ".windsurf/rules/40-skills.md",
-      content: windsurfFrontmatter("Reusable knowledge: database, git, testing, review checklist") +
-        banner("Skills (Windsurf)") +
-        transformReferencesForWindsurf(joinSections(skills.map((s) => ({ title: `Skill: ${s.title}`, body: s.body })))),
     }
   );
 
@@ -101,6 +123,14 @@ export function generateWindsurfFiles(
     files.push({
       filename: `.windsurf/workflows/${workflowPath.split('/').pop()}`,
       content: readFile(workflowPath),
+    });
+  }
+
+  // Native skills (.windsurf/skills/<name>/SKILL.md)
+  for (const skill of skills) {
+    files.push({
+      filename: `.windsurf/skills/${skill.title}/SKILL.md`,
+      content: generateSkillMd(skill.title, transformReferencesForWindsurf(skill.body)),
     });
   }
 

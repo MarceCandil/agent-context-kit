@@ -1,9 +1,11 @@
 ---
 name: git
-description: Git workflows and PR hygiene. Use this skill when creating branches, writing commit messages, preparing pull requests, or reviewing git-related best practices.
+description: Git workflows and PR hygiene. Use when creating branches, commits, or preparing pull requests.
 ---
 
-# Skill: Git & PR Hygiene
+<!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/skills/git.md -->
+
+# Skill: Git & PR hygiene
 
 ## Branching
 - Use short, descriptive branches: `feat/<scope>`, `fix/<scope>`, `chore/<scope>`.
@@ -15,13 +17,13 @@ description: Git workflows and PR hygiene. Use this skill when creating branches
   - `fix(api): handle 429 retry-after`
   - `chore(ci): fail on generated drift`
 
-## PR Discipline
+## PR discipline
 - Keep PRs scoped; avoid drive-by refactors.
 - PR description must include:
   - What changed + why
   - How to verify (commands + manual steps)
   - Risk/impact notes
 
-## Before Opening PR
+## Before opening PR
 - Run quality gates (lint/typecheck/tests).
 - Ensure generated artifacts are up to date if applicable (e.g., `pnpm sync:ai`).

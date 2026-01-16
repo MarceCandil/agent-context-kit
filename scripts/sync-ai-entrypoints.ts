@@ -25,7 +25,7 @@ function main() {
     body: read(p)
   }));
 
-  const skillFiles = listMd("ai/skills");
+  const skillFiles = listMd("ai/skills").filter((p) => !p.endsWith("README.md"));
   const skills: Section[] = skillFiles.map((p) => ({
     title: path.basename(p, ".md"),
     body: read(p)
@@ -36,9 +36,9 @@ function main() {
   // Generate files for each IDE
   const allFiles = [
     ...generateClaudeFiles(roleFiles),
-    ...generateCursorFiles(agents, aiMap, constitution, roles),
+    ...generateCursorFiles(agents, aiMap, constitution, roles, skills),
     ...generateWindsurfFiles(agents, constitution, aiMap, roles, skills, workflowFiles, joinSections, read),
-    ...generateBundledFiles(agents, aiMap, constitution, roles),
+    ...generateBundledFiles(agents, aiMap, constitution, roles, skills),
     ...generateImportBasedFiles(roleFiles),
     ...generateOpenCodeFiles(),
     ...generateLegacyFiles(),

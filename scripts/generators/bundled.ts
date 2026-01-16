@@ -19,13 +19,15 @@ export function generateBundledFiles(
   agents: string,
   aiMap: string,
   constitution: string,
-  roles: Section[]
+  roles: Section[],
+  skills: Section[] = []
 ): Array<{ filename: string; content: string }> {
   const bundle = [
     { title: "AGENTS", body: agents },
     { title: "AI Map", body: aiMap },
     { title: "Constitution", body: constitution },
     ...roles.map((r) => ({ title: `Role: ${r.title}`, body: r.body })),
+    ...skills.map((s) => ({ title: `Skill: ${s.title}`, body: s.body })),
   ];
 
   const bundledContent = joinSections(bundle);

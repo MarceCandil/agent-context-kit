@@ -1,10 +1,3 @@
----
-name: react-best-practices
-description: React and Next.js performance optimization. Use when writing or reviewing React/Next.js code.
----
-
-<!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/skills/react-best-practices.md -->
-
 # Skill: React Best Practices
 
 > **Note:** This skill is an **example template** from [Vercel's agent-skills](https://github.com/vercel-labs/agent-skills).
@@ -292,4 +285,3 @@ const sorted = users.toSorted((a, b) => a.name.localeCompare(b.name))
 - [SWR](https://swr.vercel.app)
 - [Vercel Blog: Package Imports](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js)
 - [Vercel Blog: Dashboard Performance](https://vercel.com/blog/how-we-made-the-vercel-dashboard-twice-as-fast)
-
