@@ -87,6 +87,7 @@ Edit these files to match your project:
 | `ai/roles/*.md` | Role cards (Tech Lead, Dev, QA, DevOps) |
 | `ai/workflows/*.md` | Step-by-step playbooks |
 | `ai/skills/*.md` | Reusable knowledge (git, testing, db) |
+| `.windsurf/skills/*/SKILL.md` | Native Windsurf skills (see below) |
 
 ### 3. Generate entrypoints
 
@@ -131,6 +132,30 @@ This kit enables **role switching** within a single agent session:
 /pr-review
 /deploy
 ```
+
+## Native Windsurf Skills
+
+In addition to bundled rules, this kit includes **native Windsurf skills** in `.windsurf/skills/`:
+
+| Skill | Description |
+|-------|-------------|
+| `db` | Database schema changes and migrations |
+| `git` | Git workflows and PR hygiene |
+| `test` | Testing strategy and best practices |
+| `review-checklist` | Code review guidelines |
+| `react-best-practices` | React/Next.js optimization (example) |
+
+### Customization
+
+> **This repository supports multiple languages and frameworks.**
+
+The `react-best-practices` skill is an **example template** from [Vercel's agent-skills](https://github.com/vercel-labs/agent-skills). You can:
+
+- Modify it for your specific React/Next.js conventions
+- Create similar skills for Vue, Angular, Svelte, Go, Python, etc.
+- Delete it if not relevant to your stack
+
+See `.windsurf/skills/README.md` for details on creating your own skills.
 
 ## CI: Fail on Drift
 

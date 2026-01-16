@@ -24,9 +24,9 @@ export function transformReferencesForWindsurf(content: string): string {
     .replace(/`ai\/roles\/qa\.md`/g, '`.windsurf/rules/20-roles.md` (qa section)')
     .replace(/`ai\/roles\/devops\.md`/g, '`.windsurf/rules/20-roles.md` (devops section)')
 
-    // Skills references (bundled in 40-skills.md)
-    .replace(/`ai\/skills\/\*`/g, '`.windsurf/rules/40-skills.md`')
-    .replace(/`ai\/skills\/([a-z-]+\.md)`/g, '`.windsurf/rules/40-skills.md` ($1 section)')
+    // Skills references (native skills in .windsurf/skills/ or bundled in 40-skills.md)
+    .replace(/`ai\/skills\/\*`/g, '`.windsurf/skills/` or `.windsurf/rules/40-skills.md`')
+    .replace(/`ai\/skills\/([a-z-]+)\.md`/g, '`.windsurf/skills/$1/SKILL.md`')
 
     // AGENTS.md reference
     .replace(/`AGENTS\.md`/g, '`.windsurf/rules/00-agents.md`')

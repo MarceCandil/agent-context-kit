@@ -52,6 +52,7 @@ This repository uses a small “role + workflow” operating model.
 ## Repo essentials
 - Project commands/setup: `AGENTS.md`
 - Reusable skills/knowledge: `ai/skills/*`
+- Native Windsurf skills: `.windsurf/skills/` (SKILL.md format)
 
 ## How to run work
 Choose a workflow:
