@@ -73,6 +73,10 @@ const skillMetadata: Record<string, SkillMetadata> = {
     license: "MIT",
     compatibility: "Next.js 13+ with App Router",
   },
+  security: {
+    name: "security",
+    description: "Security best practices. Use when handling auth, secrets, input validation, or API security.",
+  },
 };
 
 /**

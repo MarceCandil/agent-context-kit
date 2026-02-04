@@ -7,6 +7,7 @@ import { generateBundledFiles } from "./generators/bundled";
 import { generateImportBasedFiles } from "./generators/import-based";
 import { generateOpenCodeFiles } from "./generators/opencode";
 import { generateLegacyFiles } from "./generators/legacy";
+import { generateVSCodeFiles } from "./generators/vscode";
 import type { Section } from "./types";
 
 function main() {
@@ -42,6 +43,7 @@ function main() {
     ...generateImportBasedFiles(roleFiles),
     ...generateOpenCodeFiles(),
     ...generateLegacyFiles(),
+    ...generateVSCodeFiles(skills),
   ];
 
   // Validate Windsurf files don't exceed 12000 char limit

@@ -22,9 +22,9 @@ When you run `pnpm sync:ai`, skills are transformed for each IDE:
 
 | IDE | Output | Format |
 |-----|--------|--------|
-| Windsurf | `.windsurf/rules/40-skills.md` | Bundled rules |
-| Windsurf | `.windsurf/skills/*/SKILL.md` | Native skills |
-| Cursor | `.cursor/rules/40-skills.mdc` | Bundled rules |
+| Windsurf | `.windsurf/skills/*/SKILL.md` | Native skills ([agentskills.io](https://agentskills.io)) |
+| Cursor | `.cursor/skills/*/SKILL.md` | Native skills ([agentskills.io](https://agentskills.io)) |
+| VS Code/Copilot | `.github/skills/*/SKILL.md` | Native skills ([agentskills.io](https://agentskills.io)) |
 | Claude Code | Referenced via `@ai/skills/*` | Imports |
 | Others | Bundled in main instruction file | Inline |
 
@@ -56,12 +56,20 @@ This branch includes the **react-best-practices** skill adapted from [Vercel's a
    ```
 3. Run `pnpm sync:ai` to distribute to all IDEs
 
-## Windsurf Native Skills
+## Native Skills (Windsurf, Cursor, VS Code)
 
-For Windsurf, skills are also generated as native SKILL.md files in `.windsurf/skills/`. This enables:
+Skills are generated as native `SKILL.md` files following the [agentskills.io](https://agentskills.io) standard:
 
-- **Automatic invocation** via "progressive disclosure"
-- **Manual invocation** via `@skill-name` in Cascade
+| IDE | Location | Invocation |
+|-----|----------|------------|
+| Windsurf | `.windsurf/skills/<name>/SKILL.md` | `@skill-name` in Cascade |
+| Cursor | `.cursor/skills/<name>/SKILL.md` | `/skill-name` in Agent chat |
+| VS Code/Copilot | `.github/skills/<name>/SKILL.md` | Automatic or via prompt |
+
+This enables:
+
+- **Automatic invocation** via "progressive disclosure" (agent decides when relevant)
+- **Manual invocation** via `/skill-name` or `@skill-name` depending on IDE
 - **Supporting resources** (templates, checklists) in skill folders
 
 ## Advanced: Progressive Disclosure with Subdirectories
