@@ -11,7 +11,7 @@ description: Database schema changes and migration workflows. Use when creating,
 - Never edit migration history retroactively once merged.
 - Prefer additive changes (new migrations) over rewriting.
 
-## Workflow
+## Procedure
 1) Describe the schema change in plain language.
 2) Generate a migration using the repo’s standard command.
 3) Apply migration locally.

@@ -203,7 +203,7 @@ Ensure safe delivery, observability, and **context integrity** in CI/CD.
 - Never edit migration history retroactively once merged.
 - Prefer additive changes (new migrations) over rewriting.
 
-## Workflow
+## Procedure
 1) Describe the schema change in plain language.
 2) Generate a migration using the repo’s standard command.
 3) Apply migration locally.
@@ -267,6 +267,38 @@ Ensure safe delivery, observability, and **context integrity** in CI/CD.
 ## Risk
 - Calls out migration/deploy implications (if any)
 - Includes rollback notes for non-trivial changes
+
+
+---
+
+## Skill: security
+
+# Skill: Security
+
+## Secrets & credentials
+- Never commit secrets (API keys, tokens, passwords) to the repo.
+- Use environment variables; document required vars in `AGENTS.md` or `.env.example`.
+- If a secret is accidentally committed, rotate it immediately and scrub from history.
+
+## Input validation
+- Validate and sanitize all user input on the server side.
+- Use allowlists over denylists where possible.
+- Escape output to prevent XSS (HTML, URL, SQL contexts).
+
+## Authentication & authorization
+- Verify auth on every protected endpoint; don't rely on client-side checks alone.
+- Use established libraries (e.g., bcrypt for hashing, JWT with short expiry).
+- Implement proper session management (secure cookies, CSRF protection).
+
+## API security
+- Use HTTPS for all external calls.
+- Validate Content-Type and reject unexpected payloads.
+- Rate-limit sensitive endpoints (login, password reset).
+
+## Logging & observability
+- Never log sensitive data (passwords, tokens, PII).
+- Configure redaction for common sensitive fields.
+- Log auth failures and suspicious activity for audit.
 
 
 ---

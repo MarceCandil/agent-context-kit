@@ -67,6 +67,10 @@ const skillMetadata: Record<string, SkillMetadata> = {
     name: "review-checklist",
     description: "Code review guidelines. Use when reviewing pull requests or ensuring quality standards.",
   },
+  security: {
+    name: "security",
+    description: "Security best practices. Use when handling auth, secrets, input validation, or API security.",
+  },
 };
 
 /**
