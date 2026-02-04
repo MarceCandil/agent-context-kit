@@ -86,6 +86,7 @@ skill-name/
 ### Example: Large Skill with References
 
 ```
+<<<<<<< HEAD
 framework-best-practices/
 ├── SKILL.md                    # Core patterns + when to apply
 ├── references/
@@ -93,6 +94,15 @@ framework-best-practices/
 │   └── performance-metrics.md  # Performance analysis guides
 └── assets/
     └── config.json             # Reusable configuration
+=======
+react-best-practices/
+├── SKILL.md                    # Core patterns + when to apply
+├── references/
+│   ├── next-app-router.md      # Detailed App Router patterns
+│   └── performance-metrics.md  # Bundle analysis guides
+└── assets/
+    └── lighthouse-config.json  # Reusable Lighthouse config
+>>>>>>> 32d26a4 (feat(docs): add verification checklist and skill metadata to AI agent rules)
 ```
 
 **Best practice:** Keep `SKILL.md` lean. Move detailed reference material to `references/` files to avoid hogging the context window.
