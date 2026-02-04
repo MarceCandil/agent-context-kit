@@ -67,6 +67,12 @@ const skillMetadata: Record<string, SkillMetadata> = {
     name: "review-checklist",
     description: "Code review guidelines. Use when reviewing pull requests or ensuring quality standards.",
   },
+  "react-best-practices": {
+    name: "react-best-practices",
+    description: "React and Next.js performance optimization. Use when writing or reviewing React/Next.js code.",
+    license: "MIT",
+    compatibility: "Next.js 13+ with App Router",
+  },
 };
 
 /**

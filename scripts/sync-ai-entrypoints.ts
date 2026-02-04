@@ -1,5 +1,5 @@
 import path from "node:path";
-import { read, write, listMd, clampFileSizeByChunks, joinSections } from "./utils";
+import { read, write, listMd, listSkills, clampFileSizeByChunks, joinSections } from "./utils";
 import { generateWindsurfFiles } from "./generators/windsurf";
 import { generateCursorFiles } from "./generators/cursor";
 import { generateClaudeFiles } from "./generators/claude";
@@ -25,10 +25,10 @@ function main() {
     body: read(p)
   }));
 
-  const skillFiles = listMd("ai/skills").filter((p) => !p.endsWith("README.md"));
-  const skills: Section[] = skillFiles.map((p) => ({
-    title: path.basename(p, ".md"),
-    body: read(p)
+  const skillEntries = listSkills("ai/skills");
+  const skills: Section[] = skillEntries.map((s) => ({
+    title: s.name,
+    body: read(s.path)
   }));
 
   const workflowFiles = listMd("ai/workflows");

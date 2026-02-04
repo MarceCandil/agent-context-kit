@@ -14,6 +14,7 @@ Skills are reusable knowledge bundles for complex, multi-step tasks. They provid
 | `git.md` | Git workflows and PR hygiene |
 | `test.md` | Testing strategy and best practices |
 | `review-checklist.md` | Code review guidelines |
+| `react-best-practices/` | React/Next.js optimization (modular) |
 
 ## How Skills are Distributed
 
@@ -31,12 +32,12 @@ When you run `pnpm sync:ai`, skills are transformed for each IDE:
 
 > **This repository supports multiple languages and frameworks.**
 
-The included skills are **framework-agnostic examples**. You can:
+This branch includes the **react-best-practices** skill adapted from [Vercel's agent-skills](https://github.com/vercel-labs/agent-skills). You can:
 
-- **Modify them** for your specific project conventions
-- **Add framework skills** for React, Vue, Angular, Go, Python, etc.
+- **Modify it** for your specific React/Next.js conventions
+- **Add more framework skills** for Vue, Angular, Go, Python, etc.
 - **Use community skills** from [Vercel's agent-skills](https://github.com/vercel-labs/agent-skills) or [Anthropic's skills](https://github.com/anthropics/skills)
-- **Add new skills** by creating `<skill-name>.md` files
+- **Add new skills** by creating `<skill-name>.md` files or `<skill-name>/SKILL.md` directories
 
 ## Creating New Skills
 
