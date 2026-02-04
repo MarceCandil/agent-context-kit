@@ -143,19 +143,17 @@ In addition to bundled rules, this kit includes **native Windsurf skills** in `.
 | `git` | Git workflows and PR hygiene |
 | `test` | Testing strategy and best practices |
 | `review-checklist` | Code review guidelines |
-| `react-best-practices` | React/Next.js optimization (example) |
 
 ### Customization
 
 > **This repository supports multiple languages and frameworks.**
 
-The `react-best-practices` skill is an **example template** from [Vercel's agent-skills](https://github.com/vercel-labs/agent-skills). You can:
+The included skills are **framework-agnostic**. To add framework-specific skills:
 
-- Modify it for your specific React/Next.js conventions
-- Create similar skills for Vue, Angular, Svelte, Go, Python, etc.
-- Delete it if not relevant to your stack
+- Use community skills from [Vercel's agent-skills](https://github.com/vercel-labs/agent-skills) or [Anthropic's skills](https://github.com/anthropics/skills)
+- Create your own for React, Vue, Angular, Go, Python, etc.
 
-See `.windsurf/skills/README.md` for details on creating your own skills.
+See `ai/skills/README.md` for details on creating your own skills.
 
 ## CI: Fail on Drift
 

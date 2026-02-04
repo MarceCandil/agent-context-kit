@@ -11,6 +11,14 @@
 - Typecheck: `pnpm typecheck`
 - Tests: `pnpm test`
 - Lint: `pnpm lint`
+- Sync AI files: `pnpm sync:ai`
+
+## Verification (run after changes)
+After making changes, verify your work:
+1. `pnpm typecheck` — must pass
+2. `pnpm lint` — must pass
+3. `pnpm test` — must pass
+4. `pnpm sync:ai && git diff --exit-code` — generated files must stay in sync
 
 ## Workflows (Windsurf/Cascade or manual)
 - Feature: `ai/workflows/feature-dev.md`

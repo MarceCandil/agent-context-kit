@@ -1,4 +1,4 @@
-import type { Section } from "../types";
+import type { Section, SkillMetadata } from "../types";
 
 /**
  * Transform references from ai/* to .windsurf/* for self-contained Windsurf folder.
@@ -47,26 +47,49 @@ function banner(title: string): string {
 }
 
 /**
- * Skill descriptions for native Windsurf SKILL.md files.
- * Maps skill name to description for automatic invocation.
+ * Skill metadata for native Windsurf SKILL.md files.
+ * Per agentskills.io spec: name and description required, license and compatibility optional.
  */
-const skillDescriptions: Record<string, string> = {
-  db: "Database schema changes and migration workflows. Use when creating, modifying, or rolling back migrations.",
-  git: "Git workflows and PR hygiene. Use when creating branches, commits, or preparing pull requests.",
-  test: "Testing strategy and best practices. Use when writing tests or deciding test coverage.",
-  "review-checklist": "Code review guidelines. Use when reviewing pull requests or ensuring quality standards.",
-  "react-best-practices": "React and Next.js performance optimization. Use when writing or reviewing React/Next.js code.",
+const skillMetadata: Record<string, SkillMetadata> = {
+  db: {
+    name: "db",
+    description: "Database schema changes and migration workflows. Use when creating, modifying, or rolling back migrations.",
+  },
+  git: {
+    name: "git",
+    description: "Git workflows and PR hygiene. Use when creating branches, commits, or preparing pull requests.",
+  },
+  test: {
+    name: "test",
+    description: "Testing strategy and best practices. Use when writing tests or deciding test coverage.",
+  },
+  "review-checklist": {
+    name: "review-checklist",
+    description: "Code review guidelines. Use when reviewing pull requests or ensuring quality standards.",
+  },
 };
 
 /**
  * Generate native Windsurf SKILL.md file content.
+ * Follows agentskills.io spec with optional license and compatibility fields.
  */
 function generateSkillMd(skillName: string, skillBody: string): string {
-  const description = skillDescriptions[skillName] || `Skill for ${skillName}`;
-  return `---
-name: ${skillName}
-description: ${description}
----
+  const meta = skillMetadata[skillName] || { name: skillName, description: `Skill for ${skillName}` };
+
+  let frontmatter = `---
+name: ${meta.name}
+description: ${meta.description}`;
+
+  if (meta.license) {
+    frontmatter += `\nlicense: ${meta.license}`;
+  }
+  if (meta.compatibility) {
+    frontmatter += `\ncompatibility: ${meta.compatibility}`;
+  }
+
+  frontmatter += `\n---`;
+
+  return `${frontmatter}
 
 <!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/skills/${skillName}.md -->
 
