@@ -1,0 +1,43 @@
+---
+description: "AI Hub - entry point and project map"
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+<!-- GENERATED. DO NOT EDIT DIRECTLY. Source: ai/* and AGENTS.md -->
+
+# AI Map (Cursor)
+# AI Hub (Project Map)
+
+This repository uses a small “role + workflow” operating model.
+
+## Non-negotiables
+- Follow `.cursor/rules/10-constitution.mdc` (quality, safety, repo conventions).
+- If you are uncertain, stop and ask. Do not invent requirements.
+- Prefer minimal diffs and incremental steps.
+
+## Repo essentials
+- Project commands/setup: `.cursor/rules/00-agents.mdc`
+- Reusable skills/knowledge: `.cursor/skills/`
+- Native Windsurf skills: `.windsurf/skills/` (SKILL.md format)
+
+## How to run work
+Choose a workflow:
+- Feature work: `ai/workflows/feature-dev.md`
+- Bug fix: `ai/workflows/bug-fix.md`
+- PR review: `ai/workflows/pr-review.md`
+- Deploy/release: `ai/workflows/deploy.md`
+
+Choose a role (to frame how you think):
+- Tech Lead: `.cursor/rules/20-roles.mdc` (tech-lead section)
+- Dev: `.cursor/rules/20-roles.mdc` (dev section)
+- QA: `.cursor/rules/20-roles.mdc` (qa section)
+- DevOps: `.cursor/rules/20-roles.mdc` (devops section)
+
+## What to do first in any task
+1) Restate goal + constraints
+2) Identify files/modules to touch
+3) Draft a plan (3–8 steps)
+4) Execute step-by-step, verifying with commands/tests
+
